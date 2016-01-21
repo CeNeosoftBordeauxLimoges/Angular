@@ -36,7 +36,7 @@ var libraryList = angular.module('libraryList',[]);
 var routeAppControllers = angular.module('routeAppControllers', [])
 
 /**
- * Contrôleur de l'application "Todo List" décrite dans le chapitre "La logique d'AngularJS".
+ * Contrôleur de la page de la bibliothèque
  */
 libraryList.controller('libraryController', ['$scope',
     function ($scope) {
@@ -49,6 +49,7 @@ libraryList.controller('libraryController', ['$scope',
         	// Réinitialisation de la variable newTodo
             $scope.newBookTitle = '';
             $scope.newBookAuthor = '';
+            $scope.newBookDate = '';
         };
         
         // Ajouter un livre
@@ -57,6 +58,7 @@ libraryList.controller('libraryController', ['$scope',
             // en début et fin d'une chaîne de caractères
             var newBookTitle = $scope.newBookTitle.trim();
             var newBookAuthor = $scope.newBookAuthor.trim();
+            var newBookDate = $scope.newBookDate.trim();
             if (!newBookTitle.length) {
                 // éviter les livres vides
                 return;
@@ -65,11 +67,13 @@ libraryList.controller('libraryController', ['$scope',
                 // on ajoute le todo au tableau des todos
                 title: newBookTitle,
                 author: newBookAuthor,
+                date: newBookDate,
                 completed: false
             });
             // Réinitialisation de la variable newTodo
             $scope.newBookTitle = '';
             $scope.newBookAuthor = '';
+            $scope.newBookDate = '';
         };
 
         // Enlever un livre
@@ -82,6 +86,7 @@ libraryList.controller('libraryController', ['$scope',
             library.splice(library.indexOf(book), 1);
             $scope.newBookTitle = book.title;
             $scope.newBookAuthor = book.author;
+            $scope.newBookDate = book.date;
         };
 
         // Cocher / Décocher tous les livres
@@ -100,7 +105,7 @@ libraryList.controller('libraryController', ['$scope',
     }
 ]);
 
-//Contrôleur de la page d'accueil
+//Contrôleur de la page de bienvenue
 routeAppControllers.controller('homeCtrl', ['$scope',
     function($scope){
         $scope.message = "Bienvenue sur la page d'accueil";

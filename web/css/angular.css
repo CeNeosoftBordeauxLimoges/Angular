@@ -53,7 +53,7 @@ input[type="checkbox"]{
     margin-right:20px;
 }
 
-#new-todo {
+.new-todo {
     position: relative;
     margin: 0;
     width: 100%;
@@ -77,7 +77,7 @@ input[type="checkbox"]{
     font-smoothing: antialiased;
 }
 
-#new-todo {
+.new-todo {
     padding: 16px 16px 16px 60px;
     border: none;
     background: rgba(0, 0, 0, 0.02);

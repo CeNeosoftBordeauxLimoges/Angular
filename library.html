@@ -1,9 +1,9 @@
 <section ng-controller="libraryController">
     <h2>Votre bibliothèque</h2>
     <form id="todo-form" ng-submit="addBook()">
-        <input id="new-todo" placeholder="Titre du livre" ng-model="newBookTitle" />
-        <input id="new-todo" placeholder="Auteur" ng-model="newBookAuthor" />
-        <input type='text' id="datePicker" class="form-control" placeholder="Date de publication" ng-model="newBookDate" />
+        <input class="new-todo" placeholder="Titre du livre" ng-model="newBookTitle" />
+        <input class="new-todo" placeholder="Auteur" ng-model="newBookAuthor" />
+        <input class="new-todo" placeholder="Date de publication" ng-model="newBookDate" />
         <input class="btn btn-default" type="submit" id="submit" value="Submit" />
         <input class="btn btn-default" type="button" id="reset" value="Reset" ng-click="resetFields()"/>
     </form>
@@ -12,8 +12,11 @@
             <li ng-repeat="book in library" ng-class="{completed: book.completed}">
                 <div class="view">
                     <input class="mark" type="checkbox" ng-model="book.completed" />
-                    <span>{{book.title}} par {{book.author}}</span>
-                    <span class="action"><img src="web/images/edit.png" alt="Modifier" title="Modifier" ng-click="updateBook(book)" /><img src="web/images/croix.png" alt="Modifier" title="Modifier" ng-click="removeBook(book)" /></span>
+                    <span>{{book.title}} par {{book.author}} le {{book.date}}</span>
+                    <span class="action">
+                        <img src="web/images/edit.png" alt="Modifier" title="Modifier" ng-click="updateBook(book)" />
+                        <img src="web/images/croix.png" alt="Modifier" title="Modifier" ng-click="removeBook(book)" />
+                    </span>
                 </div>
             </li>
         </ul>
