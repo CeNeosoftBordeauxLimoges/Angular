@@ -8,9 +8,7 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		
-		<link rel="stylesheet" type="text/css" href="web/css/angular.css" />
-        
-		<link rel="icon" type="image/x-icon" href="web/images/logo_test.png" />
+		<link rel="stylesheet" type="text/css" href="angular.css" />
     </head>
     <body>
         <nav>
@@ -19,11 +17,33 @@
         </nav>
         <div ng-view>
         </div>
+        
+        {% for post in myposts %}
+        <h2><a href="/post/{{post['permalink']}}">{{post['title']}}</a></h2>
+        Posted {{post['date']}} <i>By {{post['author']}}</i><br>
+        Comments:
+        <a href="/post/{{post['permalink']}}">{{post['comments']|length}}</a>
+        <hr>
+        {% autoescape false %}
+        {{post['body']}}
+        {% endautoescape %}
+        <p>
+        <p>
+        <em>Filed Under</em>:
+        {% for tag in post.tags %}
+            {% if loop.first %}
+                <a href="/tag/{{tag}}">{{tag}}</a>
+            {% else %}
+                , <a href="/tag/{{tag}}">{{tag}}</a>
+            {% endif %}
+        {% endfor %}
+        {% endfor %}
+        
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.js"></script>
 		<script src="http://code.angularjs.org/1.2.9/angular-route.js"></script>
-		<script src="web/js/library.js"></script>
-        <script src="web/js/script.js"></script>
+		<script src="library.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>
